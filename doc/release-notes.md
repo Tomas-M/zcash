@@ -43,3 +43,8 @@ Platform Support
 - Ubuntu 18.04 LTS has been removed from the list of supported platforms. It
   reached End of Support on May 31st 2023, and no longer satisfies our Tier 2
   policy requirements.
+
+Python Support
+--------------
+
+Support for Python 2 has been discontinued for all test files and tools.

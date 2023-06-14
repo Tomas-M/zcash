@@ -1,6 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+# Copyright (c) 2013-2017 The Bitcoin Core developers
+# Distributed under the MIT software license, see the accompanying
+# file COPYING or https://www.opensource.org/licenses/mit-license.php .
 #
-# Generate seeds.txt from Pieter's DNS seeder
+# Generate `seeds.txt`.
 #
 
 NSEEDS=512
@@ -11,13 +14,8 @@ MIN_BLOCKS = 337600
 
 # These are hosts that have been observed to be behaving strangely (e.g.
 # aggressively connecting to every node).
-SUSPICIOUS_HOSTS = set([
-    "130.211.129.106", "178.63.107.226",
-    "83.81.130.26", "88.198.17.7", "148.251.238.178", "176.9.46.6",
-    "54.173.72.127", "54.174.10.182", "54.183.64.54", "54.194.231.211",
-    "54.66.214.167", "54.66.220.137", "54.67.33.14", "54.77.251.214",
-    "54.94.195.96", "54.94.200.247"
-])
+SUSPICIOUS_HOSTS = {
+}
 
 import re
 import sys
@@ -161,9 +159,9 @@ def main():
 
     for ip in ips:
         if ip['net'] == 'ipv6':
-            print '[%s]:%i' % (ip['ip'], ip['port'])
+            print('[%s]:%i' % (ip['ip'], ip['port']))
         else:
-            print '%s:%i' % (ip['ip'], ip['port'])
+            print('%s:%i' % (ip['ip'], ip['port']))
 
 if __name__ == '__main__':
     main()
