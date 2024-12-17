@@ -4870,9 +4870,9 @@ UniValue z_sendmany(const UniValue& params, bool fHelp)
     if (!EnsureWalletIsAvailable(fHelp))
         return NullUniValue;
 
-    if (fHelp || params.size() < 2 || params.size() > 5)
+    if (fHelp || params.size() < 2 || params.size() > 6)
         throw runtime_error(
-            "z_sendmany \"fromaddress\" [{\"address\":... ,\"amount\":...},...] ( minconf ) ( fee ) ( privacyPolicy )\n"
+            "z_sendmany \"fromaddress\" [{\"address\":... ,\"amount\":...},...] ( minconf ) ( fee ) ( privacyPolicy ) (filter_txid)\n"
             "\nSend a transaction with multiple recipients. Amounts are decimal numbers with at"
             "\nmost 8 digits of precision. Change generated from one or more transparent"
             "\naddresses flows to a new transparent address, while change generated from a"
@@ -4919,6 +4919,9 @@ UniValue z_sendmany(const UniValue& params, bool fHelp)
             "                               - \"NoPrivacy\": Allow the transaction to reveal any information necessary to create it.\n"
             "                                 This implies revealing information described under \"AllowFullyTransparent\" and\n"
             "                                 \"AllowLinkingAccountAddresses\".\n"
+            "6. filter_txid           (string, optional, default=null) If provided, the transaction will only select UTXOs from the\n"
+            "                         transaction with this txid. This is useful for spending the change output of a previous\n"
+            "                         transaction, or for spending the output of a specific transaction.\n"
             "\nResult:\n"
             "\"operationid\"          (string) An operationid to pass to z_getoperationstatus to get the result of the operation.\n"
             "\nExamples:\n"
