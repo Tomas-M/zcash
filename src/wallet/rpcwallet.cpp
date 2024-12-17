@@ -5099,7 +5099,7 @@ UniValue z_sendmany(const UniValue& params, bool fHelp)
     if (params.size() > 5 && !params[5].isNull()) {
         // If a filter_txid is provided, include it in the context info
         uint256 hash;
-        hash.SetHex(params[0].get_str());
+        hash.SetHex(params[0].get_str()); // set and get to sanitize the input
         o.pushKV("filter_txid", hash.GetHex());
     }
     UniValue contextInfo = o;
